@@ -1,0 +1,72 @@
+{
+  "application": "Microsoft Excel",
+  "locationDifference": 0.0,
+  "chartYAxisTitle": "设备数量（台）",
+  "stateTotal": 19.0,
+  "chartMajorUnit": 1.0,
+  "chartMinimum": 0.0,
+  "locationTotal": 19.0,
+  "calculation": "CalculateFullRebuild",
+  "chartLabels": [
+    "教学楼A",
+    "图书馆D",
+    "教学楼B",
+    "学生宿舍C",
+    "未登记"
+  ],
+  "locations": [
+    {
+      "location": "教学楼A",
+      "count": 5.0
+    },
+    {
+      "location": "图书馆D",
+      "count": 5.0
+    },
+    {
+      "location": "教学楼B",
+      "count": 4.0
+    },
+    {
+      "location": "学生宿舍C",
+      "count": 4.0
+    },
+    {
+      "location": "未登记",
+      "count": 1.0
+    }
+  ],
+  "chartTitle": "合并重复资产后的设备数量",
+  "chartXAxisTitle": "地点",
+  "worksheetCount": 4,
+  "stateDifference": 0.0,
+  "chartType": 51,
+  "chartSeriesFormula": "=SERIES(,地点统计!$A$6:$A$10,地点统计!$B$6:$B$10,1)",
+  "chartExported": true,
+  "states": [
+    {
+      "state": "在用",
+      "count": 12.0
+    },
+    {
+      "state": "维修",
+      "count": 3.0
+    },
+    {
+      "state": "备用",
+      "count": 3.0
+    },
+    {
+      "state": "待核验",
+      "count": 1.0
+    }
+  ],
+  "openedSuccessfully": true,
+  "chartValues": [
+    5.0,
+    5.0,
+    4.0,
+    4.0,
+    1.0
+  ]
+}

@@ -1,0 +1,137 @@
+{
+  "stage": "关闭后重新打开_离线",
+  "engine": "Microsoft Edge",
+  "offline": true,
+  "initial": {
+    "url": "file:///D:/AA_Learning/%E5%A4%A7%E4%B8%89%E4%B8%8A/%E6%A0%A1%E5%9B%AD%E7%BD%91%E5%BB%BA%E8%AE%BE%E4%B8%8E%E7%AE%A1%E7%90%86/Week3/%E5%B7%A5%E4%BD%9C%E5%8C%BA/output/%E4%BB%BB%E5%8A%A13/%E6%A0%A1%E5%9B%AD%E7%BD%91%E6%9C%8D%E5%8A%A1%E9%A1%B5.html",
+    "date": "2026 年 10 月 13 日",
+    "time": "22:00—23:30",
+    "area": "教学楼 A、教学楼 B",
+    "access": "无线网络",
+    "dorm": "学生宿舍不在本次维护范围内",
+    "qa": 5,
+    "total": "19 台",
+    "rows": 19,
+    "currentCount": "当前设备数量：19",
+    "chartNumbers": [
+      5,
+      5,
+      4,
+      4,
+      1
+    ],
+    "locations": [
+      "全部地点",
+      "教学楼A",
+      "图书馆D",
+      "教学楼B",
+      "学生宿舍C",
+      "未登记"
+    ],
+    "pending": 1,
+    "unregistered": 1,
+    "simulation": true
+  },
+  "tests": [
+    {
+      "name": "A 空搜索",
+      "expected": 5,
+      "actual": 5,
+      "pass": true
+    },
+    {
+      "name": "B 密码搜索",
+      "keyword": "密码",
+      "expected": 1,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "name": "C 无匹配结果",
+      "keyword": "火星食堂",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "D 清空搜索恢复",
+      "keyword": "",
+      "expected": 5,
+      "actual": 5,
+      "pass": true
+    },
+    {
+      "name": "搜索首尾及内部空白",
+      "keyword": "  密 码  ",
+      "expected": 1,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "name": "英文大小写与空白",
+      "keyword": " t04 ",
+      "expected": 1,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "name": "恢复默认搜索",
+      "keyword": "",
+      "expected": 5,
+      "actual": 5,
+      "pass": true
+    },
+    {
+      "name": "E 教学楼A筛选",
+      "selected": "教学楼A",
+      "expected": 5,
+      "actual": 5,
+      "pass": true
+    },
+    {
+      "name": "F 全部地点恢复",
+      "selected": "__all__",
+      "expected": 19,
+      "actual": 19,
+      "pass": true
+    },
+    {
+      "name": "未登记筛选保留",
+      "selected": "未登记",
+      "expected": 1,
+      "actual": 1,
+      "pass": true
+    },
+    {
+      "name": "最终恢复全部设备",
+      "selected": "__all__",
+      "expected": 19,
+      "actual": 19,
+      "pass": true
+    },
+    {
+      "name": "优化后无结果",
+      "keyword": "火星食堂",
+      "expected": 0,
+      "actual": 0,
+      "pass": true
+    },
+    {
+      "name": "优化后清除搜索按钮",
+      "expected": 5,
+      "actual": 5,
+      "pass": true
+    }
+  ],
+  "mobileInfo": {
+    "width": 390,
+    "bodyWidth": 390,
+    "tableScrollable": true,
+    "qas": 5,
+    "total": "19 台"
+  },
+  "exceptions": [],
+  "consoleErrors": [],
+  "externalRequests": [],
+  "allPassed": true
+}

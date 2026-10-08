@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>校园网服务中心｜教学模拟</title>
+<style>
+:root {
+  --ink:#18283a; --muted:#617083; --line:#dce5ed; --surface:#ffffff; --canvas:#f3f7fa;
+  --navy:#123b55; --blue:#1b7593; --cyan:#dff3f4; --gold:#f4c95d; --gold-soft:#fff6d8;
+  --danger:#8a4d08; --danger-soft:#fff1ca; --shadow:0 18px 50px rgba(25,56,78,.10);
+}
+* { box-sizing:border-box; }
+html { scroll-behavior:smooth; }
+body { margin:0; background:var(--canvas); color:var(--ink); font-family:"Segoe UI","Microsoft YaHei",Arial,sans-serif; line-height:1.65; }
+button,input,select { font:inherit; }
+button,select { cursor:pointer; }
+.topbar { background:linear-gradient(120deg,#103b55 0%,#16627a 100%); color:white; }
+.topbar-inner { max-width:1180px; margin:auto; padding:42px 26px 36px; display:flex; justify-content:space-between; gap:30px; align-items:flex-end; }
+.eyebrow { letter-spacing:.12em; text-transform:uppercase; font-size:.76rem; color:#bfe9ed; font-weight:700; }
+h1 { margin:7px 0 8px; font-size:clamp(2rem,4vw,3.4rem); line-height:1.12; letter-spacing:-.03em; }
+.lede { max-width:650px; color:#dceff2; margin:0; }
+.sim-badge { border:1px solid rgba(255,255,255,.45); color:#fff; border-radius:999px; padding:10px 16px; font-weight:800; white-space:nowrap; background:rgba(255,255,255,.10); }
+.nav { background:#0c2f45; }
+.nav-inner { max-width:1180px; margin:auto; padding:0 26px; display:flex; gap:6px; overflow:auto; }
+.nav a { color:#d9edf0; text-decoration:none; padding:12px 15px; border-bottom:3px solid transparent; white-space:nowrap; font-size:.93rem; }
+.nav a:hover { border-bottom-color:var(--gold); color:#fff; }
+main { max-width:1180px; margin:28px auto 60px; padding:0 26px; }
+.section { margin-top:34px; scroll-margin-top:20px; }
+.section-heading { display:flex; justify-content:space-between; gap:20px; align-items:flex-end; margin-bottom:14px; }
+.section-heading h2 { margin:0; font-size:1.45rem; letter-spacing:-.02em; }
+.section-kicker { margin:0; color:var(--muted); font-size:.92rem; }
+.card { background:var(--surface); border:1px solid var(--line); border-radius:20px; box-shadow:var(--shadow); }
+.maintenance-card { overflow:hidden; }
+.maintenance-main { padding:25px; background:linear-gradient(135deg,#e5f7f6 0%,#fff 72%); border-bottom:1px solid var(--line); }
+.final-label { display:inline-flex; gap:8px; align-items:center; background:var(--gold); color:#4e3900; padding:5px 11px; border-radius:999px; font-weight:800; font-size:.83rem; }
+.final-date { margin:13px 0 4px; font-size:clamp(1.55rem,3vw,2.2rem); font-weight:850; color:var(--navy); letter-spacing:-.025em; }
+.final-time { margin:0; font-size:1.18rem; font-weight:750; color:#22687b; }
+.detail-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:0; padding:0; }
+.detail { padding:18px 21px; border-right:1px solid var(--line); }
+.detail:last-child { border-right:0; }
+.detail-label { color:var(--muted); font-size:.82rem; display:block; margin-bottom:3px; }
+.detail-value { font-weight:750; }
+.maintenance-foot { padding:14px 25px; display:flex; flex-wrap:wrap; gap:10px 18px; align-items:center; color:#624b0b; background:var(--gold-soft); font-size:.91rem; }
+.old-notice { color:var(--muted); font-size:.86rem; }
+.qa-tools { display:flex; align-items:center; gap:12px; margin-bottom:15px; }
+.search-wrap { position:relative; flex:1; }
+.search-wrap span { position:absolute; left:14px; top:10px; color:var(--muted); }
+.search { width:100%; border:1px solid var(--line); border-radius:12px; padding:11px 14px 11px 40px; background:#fff; outline:none; }
+.search:focus,select:focus { border-color:var(--blue); box-shadow:0 0 0 3px rgba(27,117,147,.15); }
+.result-count { color:var(--muted); font-size:.9rem; white-space:nowrap; }
+.qa-list { display:grid; grid-template-columns:repeat(2,1fr); gap:14px; }
+.qa-card { padding:20px 21px; border:1px solid var(--line); border-radius:15px; background:#fff; min-height:170px; }
+.qa-card h3 { margin:0 0 10px; font-size:1rem; color:var(--navy); }
+.qa-card p { margin:0 0 12px; font-size:.95rem; white-space:pre-line; }
+.source { color:var(--muted); font-size:.79rem; border-top:1px dashed var(--line); padding-top:9px; }
+.clear-search { padding:10px 15px; border:1px solid #b9d5df; background:#e7f3f7; color:#15566b; border-radius:11px; font-weight:700; white-space:nowrap; }
+.clear-search:disabled { color:#84939e; border-color:#dde5eb; background:#f1f5f7; cursor:default; }
+.table-hint { display:none; color:var(--muted); font-size:.83rem; margin:0 0 10px; }
+.source-key { margin-top:13px; padding-top:9px; border-top:1px dashed var(--line); }
+.source-key p { margin:5px 0; }
+.no-result { grid-column:1/-1; padding:28px; text-align:center; border:1px dashed #d9a947; color:var(--danger); background:var(--gold-soft); border-radius:15px; font-weight:700; }
+.analytics-grid { display:grid; grid-template-columns:1.15fr .85fr; gap:16px; align-items:start; }
+.stats-card { padding:22px; }
+.stat-row { display:flex; justify-content:space-between; gap:18px; align-items:baseline; padding:12px 0; border-bottom:1px solid var(--line); }
+.stat-row:last-child { border-bottom:0; }
+.stat-name { color:var(--muted); }
+.stat-value { font-size:1.35rem; font-weight:850; color:var(--navy); }
+.stat-total { display:flex; align-items:center; justify-content:space-between; background:var(--navy); color:#fff; border-radius:15px; padding:17px 18px; margin-bottom:14px; }
+.stat-total strong { font-size:2rem; }
+.chart-card { padding:20px; }
+.chart-title { margin:0 0 5px; font-weight:800; }
+.chart-note { margin:0 0 12px; color:var(--muted); font-size:.82rem; }
+svg { width:100%; height:auto; display:block; overflow:visible; }
+.chart-axis { stroke:#7890a0; stroke-width:1; }
+.chart-grid { stroke:#dce5ed; stroke-width:1; stroke-dasharray:4 5; }
+.chart-bar { fill:#277d96; }
+.chart-bar:hover { fill:#e2ad2d; }
+.chart-label { fill:#485e70; font-size:12px; }
+.chart-number { fill:#173b55; font-size:12px; font-weight:800; }
+.filter-card { padding:18px 20px; display:flex; flex-wrap:wrap; align-items:center; gap:12px 18px; margin-bottom:14px; }
+.filter-card label { font-weight:800; }
+select { border:1px solid var(--line); border-radius:10px; padding:10px 36px 10px 12px; background:#fff; min-width:180px; color:var(--ink); }
+.current-count { margin-left:auto; background:var(--cyan); color:#15566b; border-radius:999px; padding:7px 13px; font-weight:800; }
+.table-card { overflow:auto; border:1px solid var(--line); border-radius:16px; background:#fff; }
+table { width:100%; border-collapse:collapse; min-width:900px; }
+th,td { text-align:left; padding:12px 13px; border-bottom:1px solid var(--line); vertical-align:top; font-size:.89rem; }
+th { background:#eaf2f5; color:var(--navy); font-size:.82rem; letter-spacing:.02em; white-space:nowrap; }
+tbody tr:hover { background:#f7fbfc; }
+.badge { display:inline-flex; border-radius:999px; padding:3px 9px; font-size:.78rem; font-weight:750; white-space:nowrap; }
+.badge-warn { color:var(--danger); background:var(--danger-soft); }
+.badge-ok { color:#1f5b42; background:#e3f4ea; }
+footer { max-width:1180px; margin:0 auto 45px; padding:22px 26px 0; color:var(--muted); font-size:.83rem; border-top:1px solid var(--line); }
+footer p { margin:6px 0; }
+@media (max-width:850px) {
+  .topbar-inner { align-items:flex-start; flex-direction:column; padding-top:32px; }
+  .detail-grid { grid-template-columns:repeat(2,1fr); } .detail:nth-child(2) { border-right:0; } .detail:nth-child(-n+2) { border-bottom:1px solid var(--line); }
+  .analytics-grid { grid-template-columns:1fr; } .qa-list { grid-template-columns:1fr; } .table-hint { display:block; }
+}
+@media (max-width:560px) {
+  main { padding:0 14px; margin-top:18px; } .topbar-inner { padding-left:16px; padding-right:16px; } .nav-inner { padding:0 14px; }
+  .detail-grid { grid-template-columns:1fr; } .detail, .detail:nth-child(2) { border-right:0; border-bottom:1px solid var(--line); } .detail:last-child { border-bottom:0; }
+  .section-heading { display:block; } .section-kicker { margin-top:4px; } .qa-tools { display:flex; flex-wrap:wrap; gap:9px; } .search-wrap { flex-basis:100%; } .result-count { margin-left:auto; }
+  .current-count { margin-left:0; } footer { padding-left:14px; padding-right:14px; }
+}
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="topbar-inner">
+    <div><div class="eyebrow">Campus Network Service Center</div><h1>校园网服务中心</h1><p class="lede">把维护安排、报修要点和设备信息放在一个本地页面里，方便新生快速查找。</p></div>
+    <div class="sim-badge">教学模拟</div>
+  </div>
+  <nav class="nav"><div class="nav-inner"><a href="#maintenance">维护安排</a><a href="#qa">办事问答</a><a href="#overview">设备统计</a><a href="#details">设备明细</a></div></nav>
+</header>
+<main>
+<section id="maintenance" class="section">
+  <div class="section-heading"><h2>最新网络维护安排</h2><p class="section-kicker">以同一发布单位的后续调整通知为准</p></div>
+  <div class="card maintenance-card">
+    <div class="maintenance-main"><span class="final-label">最终维护安排</span><div class="final-date" id="maintenance-date"></div><p class="final-time" id="maintenance-time"></p></div>
+    <div class="detail-grid"><div class="detail"><span class="detail-label">影响区域</span><span class="detail-value" id="maintenance-area"></span></div><div class="detail"><span class="detail-label">影响接入方式</span><span class="detail-value" id="maintenance-access"></span></div><div class="detail"><span class="detail-label">学生宿舍</span><span class="detail-value" id="maintenance-dorm"></span></div><div class="detail"><span class="detail-label">维护状态</span><span class="detail-value">原定 10 月 12 日已取消</span></div></div>
+    <div class="maintenance-foot"><strong>注意事项</strong><span id="maintenance-note"></span><span class="old-notice" id="old-notice"></span></div>
+  </div>
+  <p class="source">【来源：04，U1「替代关系」、U2「最终维护安排」、U3「影响范围」；03，第1页，M3「变更说明」】</p>
+</section>
+<section id="qa" class="section">
+  <div class="section-heading"><h2>校园网办事问答</h2><p class="section-kicker">搜索问题或答案中的关键词</p></div>
+  <div class="qa-tools"><div class="search-wrap"><span aria-hidden="true">⌕</span><input class="search" id="qa-search" type="search" placeholder="例如：密码、维护、收费" autocomplete="off" aria-label="搜索办事问答"></div><button type="button" class="clear-search" id="clear-search" disabled>清空搜索</button><div class="result-count" id="qa-count" role="status" aria-live="polite"></div></div>
+  <div class="qa-list" id="qa-list" aria-label="办事问答搜索结果"></div>
+</section>
+<section id="overview" class="section">
+  <div class="section-heading"><h2>设备统计概览</h2><p class="section-kicker">整理后、合并重复资产的统计口径</p></div>
+  <div class="analytics-grid"><div class="card stats-card"><div class="stat-total"><span>整理后设备总数</span><strong id="device-total"></strong></div><div id="state-stats"></div></div><div class="card chart-card"><p class="chart-title">地点设备数量</p><p class="chart-note">单位：台｜合并重复资产后的设备数量</p><svg id="location-chart" viewBox="0 0 640 310" role="img" aria-label="地点设备数量柱状图"></svg></div></div>
+</section>
+<section id="details" class="section">
+  <div class="section-heading"><h2>设备明细</h2><p class="section-kicker">保留原始记录号、原始状态和整理备注</p></div>
+  <div class="card filter-card"><label for="location-filter">地点筛选</label><select id="location-filter" aria-label="按地点筛选设备"><option value="__all__">全部地点</option></select><span class="current-count" id="device-count" role="status" aria-live="polite"></span></div>
+  <p class="table-hint">设备表可左右滑动，查看状态、原始状态和备注。</p><div class="table-card" tabindex="0" aria-label="设备明细，可横向滚动"><table><thead><tr><th>记录号 / 原始记录号</th><th>原工作表行号</th><th>资产编号</th><th>设备类型</th><th>地点</th><th>状态</th><th>原始状态</th><th>备注</th></tr></thead><tbody id="device-body"></tbody></table></div>
+</section>
+</main>
+<footer><p><strong>数据来源：</strong>本页面数据来源于任务一核验后的《校园网办事指南》和任务二整理后的校园设备台账。</p><p>网页内容取自 output/任务1/校园网办事指南.docx；设备数据与统计取自 output/任务2/设备台账分析.xlsx 的“整理后台账”“地点统计”“状态统计”。所有数据均已内嵌在本页。</p><div class="source-key"><strong>问答中的来源编号（沿用任务一最终指南）</strong><p>01：01_校园网络服务说明.docx（S1—S4）</p><p>02：02_网络报修指南.pdf（第1页，R1—R3）</p><p>03：03_网络维护通知_原安排.pdf（第1页，M1—M3）</p><p>04：04_网络维护时间调整.html（U1—U3）</p><p>06：06_学生报修记录.txt（T01—T06）</p></div><p>教学模拟：页面仅供课程练习使用。数据中的“未登记”表示原始地点为空后按规则填入；“待核验”表示原始状态不属于“在用、维修、备用”，原始值仍保留。</p></footer>
+<script>
+'use strict';
+const maintenance = {"date": "2026 年 10 月 13 日", "time": "22:00—23:30", "area": "教学楼 A、教学楼 B", "access": "无线网络", "dorm": "学生宿舍不在本次维护范围内", "note": "原定 10 月 12 日的维护已取消；有线网络与学生宿舍不在本次维护范围内。", "source": "04，U1「替代关系」、U2「最终维护安排」、U3「影响范围」", "old": "原通知：2026 年 10 月 12 日 22:00—23:00（已由后续调整通知替代）"};
+const qas = [{"q": "① 最终安排在什么日期、什么时段？", "a": "2026 年 10 月 13 日 22:00—23:30。原定 10 月 12 日的维护已取消。", "source": "04，U1「替代关系」、U2「最终维护安排」"}, {"q": "② 影响哪些区域、接入方式？学生宿舍在范围内吗？", "a": "仅教学楼 A、教学楼 B 的无线网络可能短时中断。有线网络与学生宿舍不在本次维护范围内。", "source": "03，第1页，M2「原影响范围」；04，U3「影响范围」"}, {"q": "③ 报修至少填什么？要提供账号或密码吗？", "a": "至少填写：故障发生时间、故障地点、问题现象。\n尽可能补充：设备、接入方式、影响人数、报错提示与已尝试的操作；说明是全部网站无法访问，还是仅某个网站无法访问。\n账号、密码均无需提供。工单不得填写账号密码、动态验证码或访问令牌；截图含有这些内容时，应先遮盖再提交。", "source": "02，第1页，R1「必填信息」、R2「不收集的信息」；01，S2「有线与无线」、S4「信息保护」"}, {"q": "④ 校园网每月收费多少？", "a": "材料未提供。现有已读材料均未说明每月收费金额。", "source": "01，S1—S4；02，第1页，R1—R3；03，第1页，M1—M3；04，U1—U3；06，T01—T06（均未说明金额）"}, {"q": "⑤ T04 在 10 月 12 日断网，能认定由维护导致吗？", "a": "【材料明确】T04 记录：2026-10-12 22:10，教学楼 B，无线连接无法访问网页；报修者称「看过旧通知，应该就是维护」，未提供其他证据。调整通知已取消原定 10 月 12 日的维护。\n【判断】不能据此确定，材料未提供足够证据。时间与旧通知吻合不能证明原因；实际原因仍待核验。", "source": "06，T04；04，U1；01，S3「故障处理原则」；02，第1页，R3"}];
+const records = [{"原始记录号": 1, "原工作表行号": 6, "资产编号": "A001", "设备类型": "无线接入点", "地点": "教学楼A", "状态": "在用", "原始状态": "在用", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 2, "原工作表行号": 7, "资产编号": "A002", "设备类型": "无线接入点", "地点": "教学楼A", "状态": "在用", "原始状态": "在用", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 3, "原工作表行号": 8, "资产编号": "A003", "设备类型": "交换机", "地点": "教学楼A", "状态": "在用", "原始状态": "在用", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 4, "原工作表行号": 9, "资产编号": "A004", "设备类型": "无线接入点", "地点": "教学楼B", "状态": "维修", "原始状态": "维修", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 5, "原工作表行号": 10, "资产编号": "A005", "设备类型": "交换机", "地点": "教学楼B", "状态": "在用", "原始状态": "在用", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 6, "原工作表行号": 11, "资产编号": "A006", "设备类型": "无线接入点", "地点": "图书馆D", "状态": "在用", "原始状态": "在用", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 7, "原工作表行号": 12, "资产编号": "A007", "设备类型": "无线接入点", "地点": "图书馆D", "状态": "备用", "原始状态": "备用", "是否经过合并": "否", "备注": "—"}, {"原始记录号": "8、9", "原工作表行号": "13、14", "资产编号": "A008", "设备类型": "交换机", "地点": "图书馆D", "状态": "在用", "原始状态": "在用", "是否经过合并": "是", "备注": "原始资产字段完全相同，合并并保留全部来源"}, {"原始记录号": 10, "原工作表行号": 15, "资产编号": "A010", "设备类型": "无线接入点", "地点": "学生宿舍C", "状态": "在用", "原始状态": "在用", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 11, "原工作表行号": 16, "资产编号": "A011", "设备类型": "无线接入点", "地点": "未登记", "状态": "在用", "原始状态": "在用", "是否经过合并": "否", "备注": "原地点为空，按规则填未登记"}, {"原始记录号": 12, "原工作表行号": 17, "资产编号": "A012", "设备类型": "交换机", "地点": "学生宿舍C", "状态": "维修", "原始状态": "维修", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 13, "原工作表行号": 18, "资产编号": "A013", "设备类型": "无线接入点", "地点": "教学楼A", "状态": "备用", "原始状态": "备用", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 14, "原工作表行号": 19, "资产编号": "A014", "设备类型": "交换机", "地点": "教学楼B", "状态": "在用", "原始状态": "在用", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 15, "原工作表行号": 20, "资产编号": "A015", "设备类型": "无线接入点", "地点": "图书馆D", "状态": "待核验", "原始状态": "正常", "是否经过合并": "否", "备注": "原状态“正常”非标准，待核验"}, {"原始记录号": 16, "原工作表行号": 21, "资产编号": "A016", "设备类型": "无线接入点", "地点": "学生宿舍C", "状态": "在用", "原始状态": "在用", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 17, "原工作表行号": 22, "资产编号": "A017", "设备类型": "交换机", "地点": "教学楼A", "状态": "在用", "原始状态": "在用", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 18, "原工作表行号": 23, "资产编号": "A018", "设备类型": "无线接入点", "地点": "教学楼B", "状态": "备用", "原始状态": "备用", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 19, "原工作表行号": 24, "资产编号": "A019", "设备类型": "交换机", "地点": "图书馆D", "状态": "维修", "原始状态": "维修", "是否经过合并": "否", "备注": "—"}, {"原始记录号": 20, "原工作表行号": 25, "资产编号": "A020", "设备类型": "无线接入点", "地点": "学生宿舍C", "状态": "在用", "原始状态": "在用", "是否经过合并": "否", "备注": "—"}];
+const locationStats = [{"location": "教学楼A", "count": 5}, {"location": "图书馆D", "count": 5}, {"location": "教学楼B", "count": 4}, {"location": "学生宿舍C", "count": 4}, {"location": "未登记", "count": 1}];
+const stateStats = [{"status": "在用", "count": 12}, {"status": "维修", "count": 3}, {"status": "备用", "count": 3}, {"status": "待核验", "count": 1}];
+const deviceTotal = 19;
+const $ = (id) => document.getElementById(id);
+const escapeHtml = (value) => String(value ?? '').replace(/[&<>'"]/g, ch => ({'&':'&amp;','<':'&lt;','>':'&gt;','\'':'&#39;','"':'&quot;'}[ch]));
+const normalize = (value) => String(value ?? '').toLocaleLowerCase('zh-CN').replace(/\s+/g,'');
+function renderMaintenance() {
+  $('maintenance-date').textContent = maintenance.date;
+  $('maintenance-time').textContent = maintenance.time;
+  $('maintenance-area').textContent = maintenance.area;
+  $('maintenance-access').textContent = maintenance.access;
+  $('maintenance-dorm').textContent = maintenance.dorm;
+  $('maintenance-note').textContent = maintenance.note;
+  $('old-notice').textContent = maintenance.old;
+}
+function renderQa() {
+  const query = normalize($('qa-search').value);
+  const filtered = qas.filter(item => !query || normalize(item.q + item.a).includes(query));
+  $('clear-search').disabled = $('qa-search').value.length === 0;
+  $('qa-count').textContent = query ? `找到 ${filtered.length} / ${qas.length} 条` : `共 ${qas.length} 条`;
+  $('qa-list').innerHTML = filtered.length ? filtered.map(item => `<article class="qa-card"><h3>${escapeHtml(item.q)}</h3><p>${escapeHtml(item.a)}</p><div class="source">【来源：${escapeHtml(item.source)}】</div></article>`).join('') : '<div class="no-result" role="status">无匹配结果。请换一个关键词，或点击“清空搜索”恢复全部 5 条问答。</div>';
+}
+function renderStateStats() {
+  $('device-total').textContent = `${deviceTotal} 台`;
+  $('state-stats').innerHTML = stateStats.map(item => `<div class="stat-row"><span class="stat-name">${escapeHtml(item.status)}</span><span class="stat-value">${item.count} 台</span></div>`).join('');
+}
+function renderChart() {
+  const svg=$('location-chart'), W=640,H=310,left=66,right=18,top=22,bottom=58,plotW=W-left-right,plotH=H-top-bottom;
+  const max=Math.max(...locationStats.map(x=>x.count),1), tickMax=Math.max(5,Math.ceil(max));
+  let out='';
+  for(let t=0;t<=tickMax;t++) { const y=top+plotH-(t/tickMax)*plotH; out+=`<line class="chart-grid" x1="${left}" x2="${W-right}" y1="${y}" y2="${y}"></line><text class="chart-label" x="${left-13}" y="${y+4}" text-anchor="end">${t}</text>`; }
+  out+=`<line class="chart-axis" x1="${left}" x2="${W-right}" y1="${top+plotH}" y2="${top+plotH}"></line><line class="chart-axis" x1="${left}" x2="${left}" y1="${top}" y2="${top+plotH}"></line>`;
+  const slot=plotW/locationStats.length, barW=Math.min(65,slot*.58);
+  locationStats.forEach((item,i)=>{ const x=left+slot*i+(slot-barW)/2, h=item.count/tickMax*plotH, y=top+plotH-h; out+=`<rect class="chart-bar" x="${x}" y="${y}" width="${barW}" height="${h}" rx="7"><title>${escapeHtml(item.location)}：${item.count} 台</title></rect><text class="chart-number" x="${x+barW/2}" y="${y-8}" text-anchor="middle">${item.count}</text><text class="chart-label" x="${x+barW/2}" y="${H-25}" text-anchor="middle">${escapeHtml(item.location)}</text>`; });
+  out+=`<text class="chart-label" x="${W/2}" y="${H-3}" text-anchor="middle">地点</text><text class="chart-label" transform="translate(16 ${H/2}) rotate(-90)" text-anchor="middle">设备数量（台）</text>`;
+  svg.innerHTML=out;
+}
+function renderFilterOptions() {
+  $('location-filter').insertAdjacentHTML('beforeend', locationStats.map(item=>`<option value="${escapeHtml(item.location)}">${escapeHtml(item.location)}</option>`).join(''));
+}
+function renderDevices() {
+  const selected=$('location-filter').value;
+  const filtered=selected==='__all__'?records:records.filter(item=>item['地点']===selected);
+  $('device-count').textContent=`当前设备数量：${filtered.length}`;
+  $('device-body').innerHTML=filtered.map(item=>{
+    const stateClass=item['状态']==='待核验'?'badge badge-warn':'badge badge-ok';
+    const locationText=item['地点']==='未登记' ? `<span class="badge badge-warn">未登记</span>` : escapeHtml(item['地点']);
+    return `<tr><td>${escapeHtml(item['原始记录号'])}</td><td>${escapeHtml(item['原工作表行号'])}</td><td><strong>${escapeHtml(item['资产编号'])}</strong></td><td>${escapeHtml(item['设备类型'])}</td><td>${locationText}</td><td><span class="${stateClass}">${escapeHtml(item['状态'])}</span></td><td>${escapeHtml(item['原始状态'])}</td><td>${escapeHtml(item['备注'])}</td></tr>`;
+  }).join('');
+}
+function init() {
+  renderMaintenance(); renderQa(); renderStateStats(); renderChart(); renderFilterOptions(); renderDevices();
+  $('qa-search').addEventListener('input',renderQa);
+  $('clear-search').addEventListener('click',()=>{ $('qa-search').value=''; renderQa(); $('qa-search').focus(); });
+  $('location-filter').addEventListener('change',renderDevices);
+}
+init();
+</script>
+</body>
+</html>

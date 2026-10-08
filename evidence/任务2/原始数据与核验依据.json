@@ -1,0 +1,176 @@
+{
+  "source": "D:\\AA_Learning\\大三上\\校园网建设与管理\\Week3\\工作区\\source\\05_校园设备台账.xlsx",
+  "sheet": "资产原始记录",
+  "hash": "14fe2ff8aa32de12d5357b710bb249eb9f006bd46b220a43285bb6d9fe872a03",
+  "headerRow": 5,
+  "startRow": 6,
+  "endRow": 25,
+  "standardStatusNote": "状态约定：在用、维修、备用。空值表示未登记；原始记录不得覆盖。",
+  "standardStatuses": [
+    "在用",
+    "维修",
+    "备用"
+  ],
+  "rows": [
+    {
+      "row": 6,
+      "record": 1,
+      "asset": "A001",
+      "type": "无线接入点",
+      "location": "教学楼A",
+      "status": "在用"
+    },
+    {
+      "row": 7,
+      "record": 2,
+      "asset": "A002",
+      "type": "无线接入点",
+      "location": "教学楼A",
+      "status": "在用"
+    },
+    {
+      "row": 8,
+      "record": 3,
+      "asset": "A003",
+      "type": "交换机",
+      "location": "教学楼A",
+      "status": "在用"
+    },
+    {
+      "row": 9,
+      "record": 4,
+      "asset": "A004",
+      "type": "无线接入点",
+      "location": "教学楼B",
+      "status": "维修"
+    },
+    {
+      "row": 10,
+      "record": 5,
+      "asset": "A005",
+      "type": "交换机",
+      "location": "教学楼B",
+      "status": "在用"
+    },
+    {
+      "row": 11,
+      "record": 6,
+      "asset": "A006",
+      "type": "无线接入点",
+      "location": "图书馆D",
+      "status": "在用"
+    },
+    {
+      "row": 12,
+      "record": 7,
+      "asset": "A007",
+      "type": "无线接入点",
+      "location": "图书馆D",
+      "status": "备用"
+    },
+    {
+      "row": 13,
+      "record": 8,
+      "asset": "A008",
+      "type": "交换机",
+      "location": "图书馆D",
+      "status": "在用"
+    },
+    {
+      "row": 14,
+      "record": 9,
+      "asset": "A008",
+      "type": "交换机",
+      "location": "图书馆D",
+      "status": "在用"
+    },
+    {
+      "row": 15,
+      "record": 10,
+      "asset": "A010",
+      "type": "无线接入点",
+      "location": "学生宿舍C",
+      "status": "在用"
+    },
+    {
+      "row": 16,
+      "record": 11,
+      "asset": "A011",
+      "type": "无线接入点",
+      "location": null,
+      "status": "在用"
+    },
+    {
+      "row": 17,
+      "record": 12,
+      "asset": "A012",
+      "type": "交换机",
+      "location": "学生宿舍C",
+      "status": "维修"
+    },
+    {
+      "row": 18,
+      "record": 13,
+      "asset": "A013",
+      "type": "无线接入点",
+      "location": "教学楼A",
+      "status": "备用"
+    },
+    {
+      "row": 19,
+      "record": 14,
+      "asset": "A014",
+      "type": "交换机",
+      "location": "教学楼B",
+      "status": "在用"
+    },
+    {
+      "row": 20,
+      "record": 15,
+      "asset": "A015",
+      "type": "无线接入点",
+      "location": "图书馆D",
+      "status": "正常"
+    },
+    {
+      "row": 21,
+      "record": 16,
+      "asset": "A016",
+      "type": "无线接入点",
+      "location": "学生宿舍C",
+      "status": "在用"
+    },
+    {
+      "row": 22,
+      "record": 17,
+      "asset": "A017",
+      "type": "交换机",
+      "location": "教学楼A",
+      "status": "在用"
+    },
+    {
+      "row": 23,
+      "record": 18,
+      "asset": "A018",
+      "type": "无线接入点",
+      "location": "教学楼B",
+      "status": "备用"
+    },
+    {
+      "row": 24,
+      "record": 19,
+      "asset": "A019",
+      "type": "交换机",
+      "location": "图书馆D",
+      "status": "维修"
+    },
+    {
+      "row": 25,
+      "record": 20,
+      "asset": "A020",
+      "type": "无线接入点",
+      "location": "学生宿舍C",
+      "status": "在用"
+    }
+  ]
+}

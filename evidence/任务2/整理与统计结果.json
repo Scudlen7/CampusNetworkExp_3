@@ -1,0 +1,350 @@
+{
+  "sourceHash": "14fe2ff8aa32de12d5357b710bb249eb9f006bd46b220a43285bb6d9fe872a03",
+  "cleaned": [
+    {
+      "records": [
+        1
+      ],
+      "sourceRows": [
+        6
+      ],
+      "asset": "A001",
+      "type": "无线接入点",
+      "location": "教学楼A",
+      "status": "在用",
+      "rawStatus": "在用",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        2
+      ],
+      "sourceRows": [
+        7
+      ],
+      "asset": "A002",
+      "type": "无线接入点",
+      "location": "教学楼A",
+      "status": "在用",
+      "rawStatus": "在用",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        3
+      ],
+      "sourceRows": [
+        8
+      ],
+      "asset": "A003",
+      "type": "交换机",
+      "location": "教学楼A",
+      "status": "在用",
+      "rawStatus": "在用",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        4
+      ],
+      "sourceRows": [
+        9
+      ],
+      "asset": "A004",
+      "type": "无线接入点",
+      "location": "教学楼B",
+      "status": "维修",
+      "rawStatus": "维修",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        5
+      ],
+      "sourceRows": [
+        10
+      ],
+      "asset": "A005",
+      "type": "交换机",
+      "location": "教学楼B",
+      "status": "在用",
+      "rawStatus": "在用",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        6
+      ],
+      "sourceRows": [
+        11
+      ],
+      "asset": "A006",
+      "type": "无线接入点",
+      "location": "图书馆D",
+      "status": "在用",
+      "rawStatus": "在用",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        7
+      ],
+      "sourceRows": [
+        12
+      ],
+      "asset": "A007",
+      "type": "无线接入点",
+      "location": "图书馆D",
+      "status": "备用",
+      "rawStatus": "备用",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        8,
+        9
+      ],
+      "sourceRows": [
+        13,
+        14
+      ],
+      "asset": "A008",
+      "type": "交换机",
+      "location": "图书馆D",
+      "status": "在用",
+      "rawStatus": "在用",
+      "merged": true,
+      "note": "原始资产字段完全相同，合并并保留全部来源"
+    },
+    {
+      "records": [
+        10
+      ],
+      "sourceRows": [
+        15
+      ],
+      "asset": "A010",
+      "type": "无线接入点",
+      "location": "学生宿舍C",
+      "status": "在用",
+      "rawStatus": "在用",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        11
+      ],
+      "sourceRows": [
+        16
+      ],
+      "asset": "A011",
+      "type": "无线接入点",
+      "location": "未登记",
+      "status": "在用",
+      "rawStatus": "在用",
+      "merged": false,
+      "note": "原地点为空，按规则填未登记"
+    },
+    {
+      "records": [
+        12
+      ],
+      "sourceRows": [
+        17
+      ],
+      "asset": "A012",
+      "type": "交换机",
+      "location": "学生宿舍C",
+      "status": "维修",
+      "rawStatus": "维修",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        13
+      ],
+      "sourceRows": [
+        18
+      ],
+      "asset": "A013",
+      "type": "无线接入点",
+      "location": "教学楼A",
+      "status": "备用",
+      "rawStatus": "备用",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        14
+      ],
+      "sourceRows": [
+        19
+      ],
+      "asset": "A014",
+      "type": "交换机",
+      "location": "教学楼B",
+      "status": "在用",
+      "rawStatus": "在用",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        15
+      ],
+      "sourceRows": [
+        20
+      ],
+      "asset": "A015",
+      "type": "无线接入点",
+      "location": "图书馆D",
+      "status": "待核验",
+      "rawStatus": "正常",
+      "merged": false,
+      "note": "原状态“正常”非标准，待核验"
+    },
+    {
+      "records": [
+        16
+      ],
+      "sourceRows": [
+        21
+      ],
+      "asset": "A016",
+      "type": "无线接入点",
+      "location": "学生宿舍C",
+      "status": "在用",
+      "rawStatus": "在用",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        17
+      ],
+      "sourceRows": [
+        22
+      ],
+      "asset": "A017",
+      "type": "交换机",
+      "location": "教学楼A",
+      "status": "在用",
+      "rawStatus": "在用",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        18
+      ],
+      "sourceRows": [
+        23
+      ],
+      "asset": "A018",
+      "type": "无线接入点",
+      "location": "教学楼B",
+      "status": "备用",
+      "rawStatus": "备用",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        19
+      ],
+      "sourceRows": [
+        24
+      ],
+      "asset": "A019",
+      "type": "交换机",
+      "location": "图书馆D",
+      "status": "维修",
+      "rawStatus": "维修",
+      "merged": false,
+      "note": "—"
+    },
+    {
+      "records": [
+        20
+      ],
+      "sourceRows": [
+        25
+      ],
+      "asset": "A020",
+      "type": "无线接入点",
+      "location": "学生宿舍C",
+      "status": "在用",
+      "rawStatus": "在用",
+      "merged": false,
+      "note": "—"
+    }
+  ],
+  "issues": [
+    [
+      13,
+      8,
+      "A008",
+      "完全相同重复资产",
+      "设备类型=交换机；地点=图书馆D；状态=在用",
+      "与记录9合并；保留记录号8、9和原行13、14",
+      "同一资产编号，其余三个资产字段原值完全一致"
+    ],
+    [
+      14,
+      9,
+      "A008",
+      "完全相同重复资产",
+      "设备类型=交换机；地点=图书馆D；状态=在用",
+      "与记录8合并；保留记录号8、9和原行13、14",
+      "同一资产编号，其余三个资产字段原值完全一致"
+    ],
+    [
+      16,
+      11,
+      "A011",
+      "地点缺失",
+      "地点=（Excel空单元格）",
+      "地点填“未登记”；保留原空值说明",
+      "按规则3处理，不猜测缺失地点"
+    ],
+    [
+      20,
+      15,
+      "A015",
+      "非标准状态",
+      "状态=正常",
+      "状态填“待核验”；原始状态保留“正常”",
+      "原表第3行标准状态为在用、维修、备用；不能把“正常”推断为“在用”"
+    ]
+  ],
+  "conflicts": [],
+  "locations": {
+    "教学楼A": 5,
+    "教学楼B": 4,
+    "图书馆D": 5,
+    "学生宿舍C": 4,
+    "未登记": 1
+  },
+  "states": {
+    "在用": 12,
+    "维修": 3,
+    "备用": 3,
+    "待核验": 1
+  },
+  "chartBindings": [
+    {
+      "values": "'地点统计'!$B$6:$B$10",
+      "categories": "'地点统计'!$A$6:$A$10"
+    }
+  ]
+}
